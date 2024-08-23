@@ -23,7 +23,7 @@ public class AgeServlet extends HttpServlet {
 
         int userAge = Integer.parseInt(request.getParameter("age"));
 
-
+// Dont working
         if (userAge >= 18) {
             response.sendRedirect("https://learn.javascript.ru/");
         }
