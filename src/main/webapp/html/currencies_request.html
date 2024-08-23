@@ -12,36 +12,32 @@
     <h1>NBRB Currencies</h1>
     <h3>Chose currencies</h3>
     <!--    POST - Secure way to send credentials to the server (Back end) -->
-    <form action="currencies" method="get">
-        <label for="first">
-            Username:
-        </label>
-        <input type="text"
-               id="first"
-               name="first"
-               placeholder="Enter your Username" required>
+    <form action="currencies" method="get" id="currencies">
 
-        <label for="password">
-            Password:
+        <label for="currenciesselect">Chose a car:</label>
+        <select id="currenciesselect" name="currencieslist" form="currencies" required>
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="rub">RUB</option>
+        </select>
+
+        <label for="amount">
+            Amount:
         </label>
-        <input type="password"
-               id="password"
-               name="password"
-               placeholder="Enter your Password" required>
+        <input type="number"
+               id="amount"
+               name="amount"
+               placeholder="Amount your Username" required>
+
 
         <div class="wrap">
             <button type="submit">
-                Submit
+                Calculate
             </button>
         </div>
     </form>
-    <p>Not registered?
-        <a href="#"
-           style="text-decoration: none;">
-            Create an account
-        </a>
-    </p>
 </div>
+
 
 <style>
     body {
