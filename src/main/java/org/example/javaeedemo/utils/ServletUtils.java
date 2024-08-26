@@ -16,6 +16,13 @@ public class ServletUtils {
         request.getRequestDispatcher("/html/" + path + ".html").forward(request, response);
     }
 
+    public static void forwardJsp(final String path, final HttpServletRequest request,
+                               final HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(new Date() + ". Forward to JSP:" + path);
+
+        request.getRequestDispatcher(path + ".jsp").forward(request, response);
+    }
+
     public static void include(final String path, final String msg, final HttpServletRequest request,
                                final HttpServletResponse response) throws ServletException, IOException {
         String charset = "UTF-8";
