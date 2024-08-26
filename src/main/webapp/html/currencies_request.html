@@ -3,7 +3,7 @@
 
 <head>
     <title>Currencies</title>
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/oldStyle.css" type="text/css">
 </head>
 
 <body>
@@ -12,13 +12,13 @@
     <h1>NBRB Currencies</h1>
     <h3>Chose currencies</h3>
     <!--    POST - Secure way to send credentials to the server (Back end) -->
-    <form action="currencies" method="get" id="currencies">
+    <form action="ex-rate" method="get" id="currencies">
 
-        <label for="currenciesselect">Chose a car:</label>
-        <select id="currenciesselect" name="currencieslist" form="currencies" required>
-            <option value="usd">USD</option>
-            <option value="eur">EUR</option>
-            <option value="rub">RUB</option>
+        <label for="currenciesselect">Chose a currencies:</label>
+        <select id="currenciesselect" name="cod" form="currencies" required>
+            <option value="840">USD</option>
+            <option value="978">EUR</option>
+            <option value="643">RUB</option>
         </select>
 
         <label for="amount">
