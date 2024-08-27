@@ -17,6 +17,7 @@
         <junit.version>5.9.2</junit.version>
 
         <commons-lang3.version>3.14.0</commons-lang3.version>
+        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
 
     </properties>
 
@@ -45,6 +46,13 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
 
 
