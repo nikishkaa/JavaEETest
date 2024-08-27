@@ -21,8 +21,12 @@
 
 <%--Scriplet--%>
 <%
+    // Java is here
     counter++;
-    List<String> cars = (ArrayList<String>) request.getAttribute("cars");
+    Object cars1 = request.getAttribute("cars");
+    System.out.println(cars1);
+
+    List<String> cars = (List<String>) cars1;
     System.out.println("Hello from JSP Scriptlet");
     int x = ((int) (Math.random() * 10)) + 1;
     response.getWriter().println(x);
