@@ -1,33 +1,37 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Nikita
+  Date: 28.08.2024
+  Time: 16:57
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-
 <head>
-    <title>Login Form</title>
-    <link rel="stylesheet" href="../css/oldStyle.css" type="text/css">
+    <title>Login</title>
 </head>
-
 <body>
 
 <div class="main">
     <h1>GeeksforGeeks</h1>
     <h3>Enter your login credentials</h3>
     <!--    POST - Secure way to send credentials to the server (Back end) -->
-    <form action="login-form" method="post">
+    <form action="login" method="post">
 
-        <label for="first">
-            Username:
+        <label for="email">
+            Email:
         </label>
         <input type="text"
-               id="first"
-               name="first"
-               placeholder="Enter your Username" required>
+               id="email"
+               name="email"
+               placeholder="Enter your Email" required>
 
-        <label for="password">
+        <label for="psw">
             Password:
         </label>
         <input type="password"
-               id="password"
-               name="password"
+               id="psw"
+               name="psw"
                placeholder="Enter your Password" required>
 
         <div class="wrap">
@@ -113,5 +117,4 @@
 </style>
 
 </body>
-
 </html>

@@ -1,44 +1,41 @@
 package org.example.javaeedemo;
 
+import org.example.javaeedemo.dao.UserDAOImpl;
+import org.example.javaeedemo.model.User;
+import org.example.javaeedemo.utils.ServletUtils;
+
 import java.io.*;
 import java.util.Date;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.servlet.ServletException;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
+    private UserDAOImpl userDAO = new UserDAOImpl();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("login page request " + new Date());
-        request.getRequestDispatcher("/html/login.html").forward(request, response);
+
+        ServletUtils.forwardJsp("login", request, response);
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String userName = request.getParameter("first");
-        String userPassword = request.getParameter("password");
+        final String email = request.getParameter("email");
+        final String password = request.getParameter("psw");
 
-        // Check in DB
+        User user = null;
 
-        if (userName.equalsIgnoreCase("John")) {
-            if (userPassword.equals("1234")) {
-                response.getWriter().println("Welcome back John");
+        if ((user = userDAO.findByEmail(email)) != null) {
+            if (user.getPassword().equals(password)) {
+                ServletUtils.forwardJsp("cars-table", request, response);
                 return;
             } else {
-                // include
-                response.setContentType("text/html");
-                response.getWriter().println("<h2>Incorrect userName or password</h2>");
-
-                RequestDispatcher rd = request.getRequestDispatcher("/html/login.html");
-                rd.include(request, response);
+                response.getWriter().println("Bad credentials");
                 return;
             }
         }
-
-
     }
-
 }
