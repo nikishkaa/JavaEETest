@@ -1,5 +1,6 @@
 package org.example.javaeedemo;
 
+import com.mysql.cj.Session;
 import org.example.javaeedemo.dao.UserDAOImpl;
 import org.example.javaeedemo.model.User;
 import org.example.javaeedemo.utils.ServletUtils;
@@ -30,7 +31,13 @@ public class LoginServlet extends HttpServlet {
 
         if ((user = userDAO.findByEmail(email)) != null) {
             if (user.getPassword().equals(password)) {
-                ServletUtils.forwardJsp("cars-table", request, response);
+                HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(90); // Сколько времени пользователь будет в сессии
+
+                // Store user object within HTTP Session
+                session.setAttribute("user", user);
+
+                ServletUtils.forwardJsp("blog", request, response);
                 return;
             } else {
                 response.getWriter().println("Bad credentials");

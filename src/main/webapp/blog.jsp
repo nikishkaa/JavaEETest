@@ -1,4 +1,4 @@
-<%--
+<%@ page import="org.example.javaeedemo.model.User" %><%--
   Created by IntelliJ IDEA.
   User: Nikita
   Date: 28.08.2024
@@ -98,15 +98,32 @@
 
 
                                         <%--  Check if user in HTTP Session--%>
+
+                                        <%
+                                            Object object = session.getAttribute("user");
+                                            if (object == null) {
+                                        %>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="blog.html">Blog</a>
+                                            <a class="nav-link" href="login">Login</a>
                                         </li>
+                                        <%
+                                        } else {
+
+                                            User user = (User) object;
+
+                                        %>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="blog.html">Blog</a>
+                                            <h4>Hello, <%=user.getName()%>
+                                            </h4>
                                         </li>
 
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="logout">Logout</a>
+                                        </li>
+                                        <%}%>
 
                                     </ul>
                                     <form class="form-inline">
