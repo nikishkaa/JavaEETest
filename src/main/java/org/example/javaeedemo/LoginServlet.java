@@ -15,11 +15,25 @@ import javax.servlet.ServletException;
 public class LoginServlet extends HttpServlet {
     private UserDAOImpl userDAO = new UserDAOImpl();
 
+//    @Override
+//    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//        System.out.println("login page request " + new Date());
+//
+//        ServletUtils.forwardJsp("login", request, response);
+//    }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("login page request " + new Date());
 
-        ServletUtils.forwardJsp("login", request, response);
+        HttpSession session = request.getSession();
+
+        if (session.getAttribute("user") != null) {
+            ServletUtils.forwardJsp("blog", request, response);
+        } else {
+            ServletUtils.forwardJsp("login", request, response);
+            return;
+        }
     }
 
     @Override
