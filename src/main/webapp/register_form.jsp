@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Nikita
@@ -16,6 +17,19 @@
 <div class="main">
     <h1>GeeksforGeeks</h1>
     <h3>Enter your login credentials</h3>
+    <h2 style="color: tomato">${msg}</h2>
+    <c:if test="${cause != null}">
+        <details>
+            <summary>Error Details</summary>
+            <c:out value="${cause}"/>
+            <details>
+                <summary>Stack Trace</summary>
+                <c:out value="${stack-trace}"/>
+            </details>
+        </details>
+    </c:if>
+
+
     <!--    POST - Secure way to send credentials to the server (Back end) -->
     <form action="reg" method="post">
 
