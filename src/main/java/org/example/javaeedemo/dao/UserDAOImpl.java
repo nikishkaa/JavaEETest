@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
         ResultSet rs = null;
         try (Connection conn = DBUtils.getConnection()) {
 
-            pstmt = conn.prepareStatement("UPDATE users SET  is_active = 'Y', update_ts = CURRENT_TIMESTAMP WHERE users.id = ?;");
+            pstmt = conn.prepareStatement("UPDATE users SET  is_active = 'Y', updated_ts = CURRENT_TIMESTAMP WHERE users.id = ?;");
             pstmt.setString(1, user.getEmail());
             return pstmt.executeUpdate() == 1;
 

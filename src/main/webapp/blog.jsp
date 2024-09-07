@@ -79,6 +79,8 @@
                                     aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
+
+                            <h2>${msg}</h2>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                                     <ul class="navbar-nav  ">
