@@ -11,6 +11,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private boolean is_active; // No active by default
     private Timestamp createdTs;
     private Timestamp updatedTs;
 

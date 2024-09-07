@@ -5,6 +5,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.example.javaeedemo.dao.UserDAOImpl;
 import org.example.javaeedemo.model.User;
 import org.example.javaeedemo.utils.EncryptDecryptUtils;
+import org.example.javaeedemo.utils.MailUtils;
 import org.example.javaeedemo.utils.ServletUtils;
 
 import java.io.*;
@@ -44,7 +45,19 @@ public class RegistrationServlet extends HttpServlet {
             try {
                 boolean isCreated = userDAO.createUser(user);
                 if (isCreated) {
-                    ServletUtils.forwardJsp("blog", request, response);
+                    // just created - not active!
+                    // send mail with instruction
+                    String subject = "Welcome to Crazy Users App";
+                    String token = EncryptDecryptUtils.encrypt(user.getEmail());
+                    System.out.println(token);
+                    String msg = String.format("<b> To confirm your account , please <a href='http://localhost:8080/javaee1/activate?token=%s'>click</a></b>", token);
+
+
+                    MailUtils.sendHTMLMail(user.getEmail(), subject, msg, null, null);
+                    request.setAttribute("msg", "Check Your Email to confirm");
+                    ServletUtils.forwardJsp("register_form", request, response);
+                    return;
+//                            ServletUtils.forwardJsp("blog", request, response);
                 } else {
                     request.setAttribute("msg", "Error User Registration");
                 }

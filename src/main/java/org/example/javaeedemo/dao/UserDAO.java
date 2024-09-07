@@ -5,7 +5,8 @@ import org.example.javaeedemo.model.User;
 public interface UserDAO {
 
     User findByEmail(String email);
+
     boolean createUser(User user);
 
-
+    boolean activate(User user);
 }

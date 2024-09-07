@@ -10,6 +10,27 @@ import java.sql.SQLException;
 
 public class UserDAOImpl implements UserDAO {
 
+    public static final String Y = "Y";
+
+    @Override
+    public boolean activate(User user) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try (Connection conn = DBUtils.getConnection()) {
+
+            pstmt = conn.prepareStatement("UPDATE users SET  is_active = 'Y', update_ts = CURRENT_TIMESTAMP WHERE users.id = ?;");
+            pstmt.setString(1, user.getEmail());
+            return pstmt.executeUpdate() == 1;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Activation user problem", e);
+        } finally {
+            DBUtils.close(null, null, pstmt, rs);
+        }
+
+    }
+
     @Override
     public User findByEmail(String email) {
         PreparedStatement pstmt = null;
@@ -24,8 +45,9 @@ public class UserDAOImpl implements UserDAO {
                 user.setName(rs.getString(2));
                 user.setEmail(rs.getString(3));
                 user.setPassword(rs.getString(4));
-                user.setCreatedTs(rs.getTimestamp(5));
-                user.setUpdatedTs(rs.getTimestamp(6));
+                user.set_active(rs.getString(5).equals(Y));
+                user.setCreatedTs(rs.getTimestamp(6));
+                user.setUpdatedTs(rs.getTimestamp(7));
                 return user;
             }
 
@@ -57,7 +79,6 @@ public class UserDAOImpl implements UserDAO {
             DBUtils.close(null, null, pstmt, rs);
         }
     }
-
 
 
 }
