@@ -47,6 +47,7 @@ public class RegistrationServlet extends HttpServlet {
                 if (isCreated) {
                     // just created - not active!
                     // send mail with instruction
+
                     String subject = "Welcome to Crazy Users App";
                     String token = EncryptDecryptUtils.encrypt(user.getEmail());
                     System.out.println(token);
