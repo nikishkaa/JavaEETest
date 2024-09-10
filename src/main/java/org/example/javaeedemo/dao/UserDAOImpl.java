@@ -70,6 +70,7 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+
     @Override
     public User findByEmail(String email) {
         PreparedStatement pstmt = null;
