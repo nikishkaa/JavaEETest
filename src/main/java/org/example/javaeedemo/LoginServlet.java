@@ -3,6 +3,7 @@ package org.example.javaeedemo;
 import com.mysql.cj.Session;
 import org.example.javaeedemo.dao.UserDAOImpl;
 import org.example.javaeedemo.model.User;
+import org.example.javaeedemo.utils.EncryptDecryptUtils;
 import org.example.javaeedemo.utils.ServletUtils;
 
 import java.io.*;
@@ -44,7 +45,7 @@ public class LoginServlet extends HttpServlet {
         User user = null;
 
         if ((user = userDAO.findByEmail(email)) != null) {
-            if (user.getPassword().equals(password)) {
+            if (user.getPassword().equals(EncryptDecryptUtils.encrypt(password))) {
                 HttpSession session = request.getSession();
                 session.setMaxInactiveInterval(90); // Сколько времени пользователь будет в сессии
 
