@@ -1,5 +1,6 @@
 package org.example.javaeedemo;
 
+import org.example.javaeedemo.model.User;
 import org.example.javaeedemo.utils.ServletUtils;
 
 import java.io.*;
@@ -14,8 +15,22 @@ public class CarsServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.setAttribute("cars", Arrays.asList("BMW", "HONDA", "OPEL"));
-        ServletUtils.forwardJsp("cars-table", request, response);
+
+        // 1st in Session + 2nd has role admin
+        User user = ServletUtils.getUserInSession(request);
+        if (user == null) {
+            request.setAttribute("msg", "You should login first");
+            ServletUtils.forwardJsp("basic-msg", request, response);
+            return;
+        } else if (!user.getRoleId().getName().equals("ADMIN")) {
+            request.setAttribute("msg", "You should have admin role");
+            ServletUtils.forwardJsp("basic-msg", request, response);
+            return;
+        } else {
+            request.setAttribute("cars", Arrays.asList("BMW", "HONDA", "OPEL"));
+            ServletUtils.forwardJsp("cars-table", request, response);
+            return;
+        }
 
     }
 
