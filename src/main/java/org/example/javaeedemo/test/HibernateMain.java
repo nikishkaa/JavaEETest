@@ -1,6 +1,5 @@
 package org.example.javaeedemo.test;
 
-
 import java.util.Date;
 
 import org.example.javaeedemo.entity.Employee;
@@ -25,6 +24,16 @@ public class HibernateMain {
         //Commit transaction
         session.getTransaction().commit();
         System.out.println("Employee ID=" + emp.getId());
+
+
+        // get Employee by id
+        Session session1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        session1.beginTransaction();
+
+        Employee emp1 = (Employee) session1.load(Employee.class, 19);
+        session1.save(emp1);
+        System.out.println(emp1);
+
 
         //terminate session factory, otherwise program won't end
         HibernateUtil.getSessionFactory().close();
