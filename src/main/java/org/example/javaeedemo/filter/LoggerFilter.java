@@ -1,16 +1,18 @@
 package org.example.javaeedemo.filter;
 
+import org.example.javaeedemo.model.Role;
+
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @WebFilter(filterName = "LoggerFilter", urlPatterns = {"/*"})
 public class LoggerFilter implements Filter {
-    public void init(FilterConfig config) throws ServletException {
-
-    }
 
     public void destroy() {
     }
