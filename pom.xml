@@ -92,8 +92,9 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.5.Final</version>
+            <version>6.5.2.Final</version>
         </dependency>
+
         <!-- Hibernate 4 uses Jboss logging, but older versions slf4j for logging -->
         <dependency>
             <groupId>org.slf4j</groupId>

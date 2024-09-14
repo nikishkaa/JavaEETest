@@ -30,7 +30,7 @@ public class HibernateMain {
         Session session1 = HibernateUtil.getSessionFactory().getCurrentSession();
         session1.beginTransaction();
 
-        Employee emp1 = (Employee) session1.load(Employee.class, 19);
+        Employee emp1 = (Employee) session1.get(Employee.class, 19);
         session1.save(emp1);
         System.out.println(emp1);
 

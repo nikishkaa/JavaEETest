@@ -2,12 +2,13 @@ package org.example.javaeedemo.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "Employee", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID"})})
+@Table(name = "Employee") // , uniqueConstraints = {@UniqueConstraint(columnNames = {"ID"})}
 public class Employee {
 
     @Id
