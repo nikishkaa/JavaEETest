@@ -1,13 +1,9 @@
 package org.example.javaeedemo.dao.impl;
 
-import org.example.javaeedemo.dao.AbstractDao;
+import org.example.javaeedemo.db.AbstractJpaDAO;
 import org.example.javaeedemo.entity.Employee;
 
-public class EmployeeDao extends AbstractDao<Integer, Employee> {
-    public Employee findByEmail(String email) {
-        getSession();
-//TODO
-        return null;
-    }
+public class EmployeeDao extends AbstractJpaDAO<Integer, Employee> {
+
 
 }

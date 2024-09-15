@@ -3,6 +3,7 @@ package org.example.javaeedemo.utils;
 import org.example.javaeedemo.entity.Cart;
 import org.example.javaeedemo.entity.Employee;
 import org.example.javaeedemo.entity.Item;
+import org.example.javaeedemo.entity.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -36,6 +37,8 @@ public class HibernateAnnotationUtil {
                 .addAnnotatedClass(Employee.class)
                 .addAnnotatedClass(Item.class)
                 .addAnnotatedClass(Cart.class)
+                .addAnnotatedClass(Product.class)
+
 
 // Сюда включить классы!
                 .buildMetadata();

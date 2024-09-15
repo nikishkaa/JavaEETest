@@ -47,9 +47,9 @@ public class HibernateMain2 {
     }
 
 
-    public static void main(String[] args) {
-        Employee emp = dao.getByKey(1);
-        System.out.println(emp);
-    }
+//    public static void main(String[] args) {
+//        Employee emp = dao.getByKey(1);
+//        System.out.println(emp);
+//    }
 
 }

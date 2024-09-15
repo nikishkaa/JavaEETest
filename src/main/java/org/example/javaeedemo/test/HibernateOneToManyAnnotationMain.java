@@ -13,6 +13,8 @@ import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.EntityManagerFactory;
+
 public class HibernateOneToManyAnnotationMain {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernateOneToManyAnnotationMain.class);
@@ -31,6 +33,9 @@ public class HibernateOneToManyAnnotationMain {
 
         SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
+
+        EntityManagerFactory emf = (EntityManagerFactory) sessionFactory;
+
         LOGGER.info("Session created");
 
         try {
