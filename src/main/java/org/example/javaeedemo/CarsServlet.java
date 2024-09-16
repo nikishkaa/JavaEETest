@@ -22,7 +22,7 @@ public class CarsServlet extends HttpServlet {
             request.setAttribute("msg", "You should login first");
             ServletUtils.forwardJsp("basic-msg", request, response);
             return;
-        } else if (!user.getRoleId().getName().equals("ADMIN")) {
+        } else if (!user.getRole().getName().equals("ADMIN")) {
             request.setAttribute("msg", "You should have admin role");
             ServletUtils.forwardJsp("basic-msg", request, response);
             return;

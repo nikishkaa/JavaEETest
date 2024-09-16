@@ -29,11 +29,11 @@ public class UserDAOImpl implements UserDAO {
                 user.setId(rs.getInt(1));
                 user.setName(rs.getString(2));
                 user.setEmail(rs.getString(3));
-                user.set_active(rs.getString(4).equals(Y));
+                user.setActive(rs.getString(4).equals(Y));
                 user.setPassword(rs.getString(5));
 
                 int roleID = rs.getInt(6);
-                user.setRoleId(roleDao.findRoleById(roleID));
+                user.setRole(roleDao.findRoleById(roleID));
 
                 user.setCreatedTs(rs.getTimestamp(7));
                 user.setUpdatedTs(rs.getTimestamp(8));
@@ -84,11 +84,11 @@ public class UserDAOImpl implements UserDAO {
                 user.setId(rs.getInt(1));
                 user.setName(rs.getString(2));
                 user.setEmail(rs.getString(3));
-                user.set_active(rs.getString(4).equals(Y));
+                user.setActive(rs.getString(4).equals(Y));
                 user.setPassword(rs.getString(5));
 
                 int roleID = rs.getInt(6);
-                user.setRoleId(roleDao.findRoleById(roleID));
+                user.setRole(roleDao.findRoleById(roleID));
 
                 user.setCreatedTs(rs.getTimestamp(7));
                 user.setUpdatedTs(rs.getTimestamp(8));

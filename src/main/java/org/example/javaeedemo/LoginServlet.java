@@ -1,7 +1,10 @@
 package org.example.javaeedemo;
 
 import com.mysql.cj.Session;
-import org.example.javaeedemo.dao.UserDAOImpl;
+import org.example.javaeedemo.dao.UserDAO;
+//import org.example.javaeedemo.dao.UserDAOImpl;
+import org.example.javaeedemo.dao.UsersDao;
+import org.example.javaeedemo.db.JPAService;
 import org.example.javaeedemo.model.User;
 import org.example.javaeedemo.utils.EncryptDecryptUtils;
 import org.example.javaeedemo.utils.ServletUtils;
@@ -14,14 +17,12 @@ import javax.servlet.ServletException;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
-    private UserDAOImpl userDAO = new UserDAOImpl();
 
-//    @Override
-//    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        System.out.println("login page request " + new Date());
-//
-//        ServletUtils.forwardJsp("login", request, response);
-//    }
+
+
+    //    private UserDAOImpl userDAO = new UserDAOImpl(); // JDBC
+    private UsersDao userDAO = new UsersDao();
+
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

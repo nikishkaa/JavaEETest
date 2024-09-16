@@ -12,7 +12,7 @@
 //
 //@WebFilter(filterName = "AuthFilter")
 //public class AuthFilter implements Filter {
-//    private Map<Role, List<String>> authMap;
+//    private Map<Role, List<String>> authMap = new HashMap<>();
 //    private List<String> whiteList;
 //
 //    public void init(FilterConfig config) throws ServletException {

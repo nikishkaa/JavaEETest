@@ -18,7 +18,7 @@ public class NewHiberTest {
         configuration.setPersistentUnit("Employee");
 
 
-        JPAService.initialize(configuration);
+        JPAService.initialize();
 
         EmployeeDao employeeDao = new EmployeeDao();
 

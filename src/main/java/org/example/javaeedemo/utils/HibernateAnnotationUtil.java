@@ -4,6 +4,8 @@ import org.example.javaeedemo.entity.Cart;
 import org.example.javaeedemo.entity.Employee;
 import org.example.javaeedemo.entity.Item;
 import org.example.javaeedemo.entity.Product;
+import org.example.javaeedemo.model.Role;
+import org.example.javaeedemo.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -38,6 +40,8 @@ public class HibernateAnnotationUtil {
                 .addAnnotatedClass(Item.class)
                 .addAnnotatedClass(Cart.class)
                 .addAnnotatedClass(Product.class)
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Role.class)
 
 
 // Сюда включить классы!

@@ -41,7 +41,7 @@ public class RoleDaoImpl implements RoleDao {
 
         try (Connection conn = DBUtils.getConnection()) {
             pstmt = conn.prepareStatement("SELECT id, name, description FROM roles where id = ?");
-            pstmt.setInt(1, user.getRoleId().getId());
+            pstmt.setInt(1, user.getRole().getId());
 
             rs = pstmt.executeQuery();
             if (rs.next()) {

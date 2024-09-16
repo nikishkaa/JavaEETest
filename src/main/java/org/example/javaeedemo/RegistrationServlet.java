@@ -2,7 +2,10 @@ package org.example.javaeedemo;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+//import org.example.javaeedemo.dao.UserDAOImpl;
+import org.example.javaeedemo.dao.RolesDao;
 import org.example.javaeedemo.dao.UserDAOImpl;
+import org.example.javaeedemo.dao.UsersDao;
 import org.example.javaeedemo.model.User;
 import org.example.javaeedemo.utils.EncryptDecryptUtils;
 import org.example.javaeedemo.utils.MailUtils;
@@ -41,9 +44,17 @@ public class RegistrationServlet extends HttpServlet {
             String encryptedPassword = EncryptDecryptUtils.encrypt(password);
             user.setPassword(encryptedPassword);
 
-            UserDAOImpl userDAO = new UserDAOImpl();
+//            UserDAOImpl userDAO = new UserDAOImpl(); // JDBC
+            UsersDao usersDAO = new UsersDao();
+            RolesDao rolesDAO = new RolesDao();
+
             try {
-                boolean isCreated = userDAO.createUser(user);
+//                boolean isCreated = userDAO.createUser(user); // JDBC
+                // Set default role
+                user.setRole(rolesDAO.findById(3));
+                usersDAO.create(user);
+                boolean isCreated = usersDAO.findByEmail(email) == null;
+
                 if (isCreated) {
                     // just created - not active!
                     // send mail with instruction

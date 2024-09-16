@@ -19,7 +19,7 @@ public class ProductHiberTest {
         configuration.setPersistentUnit("Employee");
 
 
-        JPAService.initialize(configuration);
+        JPAService.initialize();
 
         ProductsDao productsDao = new ProductsDao();
 
