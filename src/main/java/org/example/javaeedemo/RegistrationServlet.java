@@ -53,7 +53,7 @@ public class RegistrationServlet extends HttpServlet {
                 // Set default role
                 user.setRole(rolesDAO.findById(3));
                 usersDAO.create(user);
-                boolean isCreated = usersDAO.findByEmail(email) == null;
+                boolean isCreated = usersDAO.findByEmail(email) != null;
 
                 if (isCreated) {
                     // just created - not active!
